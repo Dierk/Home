@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang=en>
+<head>
+	<meta charset="UTF-8">
+	<title>Prof. Dierk König</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            --left-indent: 7rem;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: normal;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            width: 100%;
+            background: linear-gradient(#e2e6ee, #e1e5ed, #d7d9e4, #cdd0dc);
+        }
+        header .title {
+            --title-font-size : 3rem;
+            padding-top:  calc( var(--left-indent) - var(--title-font-size) );
+            padding-left: var(--left-indent);
+            font-size:    var(--title-font-size);
+        }
+        @keyframes slide_in_from_right {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(0);    }
+        }
+        header img {
+            float: right;
+            max-height: 20rem;
+            animation-name: slide_in_from_right;
+            animation-duration: 1s;
+        }
+
+        main {
+            margin-left: var(--left-indent);
+        }
+
+        footer {
+            background:    linear-gradient(#cdd0dc, #e2e6ee);
+            padding-left:  var(--left-indent);
+            padding-right: var(--left-indent);
+            display:       grid;
+            grid-template-columns: 3fr 2fr;
+        }
+        address {
+            font-style:  normal;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+	<header>
+        <div class="title">
+            Prof. Dierk König
+        </div>
+		<picture>
+			<!--possible use of larger media-->
+		    <!--<source media="(min-width: 800px)" srcset="larger.jpg">-->
+		    <source srcset="Dierk_Koenig_small.jpg">
+			<img src="Dierk_Koenig_small.jpg" alt="Dierk König Portrait">
+		</picture>
+	</header>
+	<main>
+		<section>
+		  <h2>Lectures</h2>
+		  <p>Web Engineering, <time datetime="2018-09-14 08:15">HS18</time> </p>
+		  <p>Web Programming</p>
+		  <p>Web Frameworks</p>
+		</section>
+
+		<section>
+		  <h2>Public Speaking</h2>
+		  <p>JavaOne</p>
+		  <p></p>
+		</section>
+
+		<section>
+		  <h2>Publications</h2>
+		  <p>Groovy in Action</p>
+		  <p>Frege Goodness</p>
+		</section>
+
+	</main>
+	<footer>
+		<h2>Contact</h2> <div></div>
+		<address>
+            Lecturer at <a href="https://www.fhnw.ch/en/people/dierk-koenig">FHNW</a>
+            University of Applied Sciences and Arts Northwestern Switzerland
+		    School of Engineering
+		    Bahnhofstrasse 6
+		    CH-5210 Windisch
+
+            <a href="mailto:dierk.koenig@fhnw.ch">dierk.koenig@fhnw.ch</a>
+			<a href="tel:+41-56-202-79-83">+41 56 202 79 83</a>
+
+		</address>
+		<address>
+
+
+            Fellow at <a href="https://karakun.com">Karakun AG</a>
+			Leonhardsgraben 36
+			CH-4051 Basel
+
+            <a href="mailto:dierk.koenig@karakun.com">dierk.koenig@karakun.com</a>
+			<a href="tel:+41-61-551-36-00">+41 61 551 36 00</a>
+
+		</address>
+	</footer>					
+</body>
+</html>
