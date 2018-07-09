@@ -28,14 +28,16 @@
             font-size:    var(--title-font-size);
         }
         @keyframes slide_in_from_right {
-            from { transform: translateX(300%); }
+            from { transform: translateX(100%); }
             to   { transform: translateX(0);    }
+        }
+        .slide {
+            animation-name: slide_in_from_right;
+            animation-duration: 1s;
         }
         header img {
             float: right;
             max-height: 20rem;
-            animation-name: slide_in_from_right;
-            animation-duration: 3s;
         }
 
         main {
@@ -55,7 +57,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="me.classList.add('slide')">
 	<header>
         <div class="title">
             Prof. Dierk König
@@ -64,7 +66,7 @@
 			<!--possible use of larger media-->
 		    <!--<source media="(min-width: 800px)" srcset="larger.jpg">-->
 		    <source srcset="Dierk_Koenig_small.jpg">
-			<img src="Dierk_Koenig_small.jpg" alt="Dierk König Portrait">
+			<img src="Dierk_Koenig_small.jpg" alt="Dierk König Portrait" id="me">
 		</picture>
 	</header>
 	<main>
