@@ -14,6 +14,12 @@
             font-size: 2rem;
             font-weight: normal;
         }
+        a {
+            color: black;
+        }
+        a:visited {
+            color: #707070;
+        }
 
         header {
             display: grid;
@@ -66,27 +72,44 @@
 			<!--possible use of larger media-->
 		    <!--<source media="(min-width: 800px)" srcset="larger.jpg">-->
 		    <source srcset="Dierk_Koenig_small.jpg">
+            <!-- if we set the slide class immediately, the animation is not visible on first load
+                 but if we set it lazily, it is more likely to be rendered at the right time. -->
 			<img src="Dierk_Koenig_small.jpg" alt="Dierk König Portrait" id="me" onload="me.classList.add('slide')">
 		</picture>
 	</header>
 	<main>
-		<section>
-		  <h2>Lectures</h2>
-		  <p>Web Engineering</p>
-		  <p>Web Programming</p>
-		  <p>Web Frameworks</p>
-		</section>
+
+        <section>
+      		  <h2>Applied Research Projects</h2>
+      		  <p> <a href="https://www.fhnw.ch/de/die-fhnw/hochschulen/ht/institute/forschungsprojekte/medtech-blockchain-webplattform">
+                  MedTech Blockchain Webplattform</a>
+              </p>
+        </section>
+
+        <section>
+      		  <h2>Student Projects</h2>
+      		  <p> Master: Purely Functional Data Analysis with Frege and Apache Spark.</p>
+      		  <p> Master: Software Transactional Memory for the JVM in Frege.</p>
+      		  <p> Master: Dolphin.js in PureScript.</p>
+      		  <p> Bachelor: Mobile Unterstützung für die halbautomatische Sichtbefundung von Bodenproben.</p>
+        </section>
 
 		<section>
-		  <h2>Public Speaking</h2>
-		  <p>JavaOne</p>
-		  <p></p>
+		  <h2>Lectures</h2>
+		  <p>Web Engineering (de/en)</p>
+		  <p>Web Programming (de)</p>
+		  <p>Web Frameworks (de/en)</p>
+		  <p>Workshop Verteilte Systeme</p>
 		</section>
 
 		<section>
 		  <h2>Publications</h2>
-		  <p>Groovy in Action</p>
-		  <p>Frege Goodness</p>
+		  <p><a href="https://www.manning.com/books/groovy-in-action-second-edition">
+              Groovy in Action</a>
+          </p>
+		  <p><a href="https://dierk.gitbooks.io/fregegoodness/content/">
+              Frege Goodness</a>
+          </p>
 		</section>
 
 	</main>
