@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang=en>
+<head>
+    <meta charset="UTF-8">
+    <title>Projector Pattern</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            --left-indent: 7rem;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: normal;
+        }
+        a {
+            color: black;
+        }
+        a:visited {
+            color: #707070;
+        }
+        p, li {
+            margin-top:    0.6em;
+            margin-bottom: 0.6em;
+            padding-right: var(--left-indent);
+            max-width:     42em;
+        }
+        em {
+            /*font-family: Serif;*/
+            font-style: normal;
+            font-weight: bold;
+        }
+        img {
+            height: 16em;
+        }
+        p picture img {
+            height: unset;
+            padding: 2em 0 2em 0 ;
+            max-width: 42em;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            width: 100%;
+            background: linear-gradient(#e2e6ee, #e1e5ed, #d7d9e4, #cdd0dc);
+        }
+        header .title {
+            --title-font-size : 3rem;
+            padding-top:  calc( var(--left-indent) - var(--title-font-size) );
+            padding-left: var(--left-indent);
+            font-size:    var(--title-font-size);
+        }
+        header .title p {
+            font-size:  2rem;
+        }
+
+        @keyframes slide_in_from_right {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(0);    }
+        }
+        .slide {
+            animation-name: slide_in_from_right;
+            animation-duration: 1s;
+        }
+        header img {
+            float: right;
+            max-height: 20rem;
+        }
+
+        main {
+            margin-left: var(--left-indent);
+        }
+
+        footer {
+            background:    linear-gradient(#cdd0dc, #e2e6ee);
+            padding-left:  var(--left-indent);
+            padding-right: var(--left-indent);
+            display:       grid;
+            grid-template-columns: 3fr 2fr;
+        }
+        address {
+            font-style:  normal;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body >
+    <header>
+        <div class="title">
+            Projector Pattern
+            <p>Efficient Creation of Ambitious User Interfaces</p>
+        </div>
+        <picture>
+            <source srcset="../Dierk_Koenig_small.jpg">
+            <img src="../Dierk_Koenig_small.jpg" alt="Dierk König Portrait" id="me" onload="me.classList.add('slide')">
+        </picture>
+    </header>
+    <main>
+
+        <section>
+              <h2>Intro</h2>
+
+            <p>
+                The video of a conference talk that introduces the pattern is available
+                <a href="https://jaxenter.de/effiziente-oberflaechen-mit-dem-projektor-pattern-42119">
+                here
+                </a>. (german)
+            </p>
+            <p>
+                The projector pattern has emerged from the work of many developers.
+                The current form was mainly influenced by
+                Prof. Dierk König, Dr. Dieter Holz, Gerrit Grunwald, and Andres Almiray.
+                We present the pattern in classical structure as introduced by Christopher Alexander.
+            </p>
+
+        </section>
+        <section>
+              <h2>Context</h2>
+
+              <p>
+                  The projector pattern is designed to be used for
+                  user interfaces with potentially many screens that can be classified into typical
+                  <a href="#catalog">schemes</a>.
+                  Such schemes might include one-column-form, two-column-form, search form, dashboard, etc.
+              </p>
+              <p>
+                  The pattern can only work if we have UI toolkit with elements (aka components, widgets)
+                  that expose a binding facility. Binding means that we can listen for changes in the element
+                  (view binding) and we apply changes to the element (data binding).
+                  Some such UI toolkits are: JavaFX, Swing, AWT, SWT, WFC, HTML/DOM, Tk, GTK, and Fox.
+                  The pattern is not designed to work with command-line user interfaces.
+              </p>
+              <p>
+                  Another prerequisite is the availability of a
+                  <a href="#pm">presentation model</a> abstraction. We will explain that
+                  <a href="#pm">a little later</a>. If presentation models are not yet available, they can be created
+                  quite easily.
+              </p>
+        </section>
+
+        <section>
+              <h2>Problem</h2>
+
+              <p>
+                  Implementing dedicated views for many screens including model binding leads to much code
+                  that needs to be created, tested, and maintained.
+                  Such code tends to be full of structural duplication, which leads to all sorts of problems
+                  like keeping the UI look and feel consistent, having to fix a single bugs in many places, etc.
+              </p>
+              <p>
+                  Moreover, this code is UI-toolkit specific and needs to be replaced with any change of the toolkit.
+                  The sheer amount of code can make this prohibitively expensive, which leads to the
+                  costly and risky "solution" of redoing the presentation layer all over again.
+                  The UI code becomes a throw-away artefact without the chance to improve and mature.
+              </p>
+              <p>
+                  Have you ever heard "we had no time to make a better UI"?
+                  This is a direct result of the bad economics behind throw-away-and-redo UIs.
+                  Needless to say that it is not a morale booster to work for the trash can and
+                  the best and brightest developers might want to work on something that is more appreciated.
+              </p>
+        </section>
+
+        <section>
+            <h2>Forces</h2>
+
+            <p>
+                One might assume that many of the issues can be solved by source code generation.
+                But code generation and templating approaches often don't yield enough flexibility
+                in the view construction:
+            </p>
+            <ul>
+                <li>the model binding & interaction paradigm</li>
+                <li>dynamic modifications and extensions at runtime</li>
+                <li>compositional aggregates</li>
+                <li>even more importantly, statically created structures are
+                    generally difficult to re-apply when the structure needs modification
+                </li>
+            </ul>
+            <p>
+                Various attempts to source code generation had varied degrees of success in the
+                past like CASE tools and model-driven-architecture (MDA). This approach has its
+                areas of applicability, but you have to do it really well to succeed, and it is very
+                easy to not doing it well enough.
+            </p>
+
+        </section>
+
+        <section>
+          <h2>Solution</h2>
+
+              <p>
+                    The general solution idea is to create a projector abstraction, which - depending
+                    on the programming language - can be an object, a function, a module, or a data structure
+                    with enclosed logic.
+              </p>
+              <p>
+                  <picture>
+                        <source srcset="ProjectorPattern.png">
+                        <img src="ProjectorPattern.png" alt="Projector Pattern Overview">
+                    </picture>
+              </p>
+              <p>
+                    The projector takes rich presentation models as input and creates a presentation
+                    by "projecting" the presentation models in the target UI toolkit. Such a presentation
+                    creates the view from UI elements as available in the target UI toolkit and
+                    binds the presentation models to those elements.
+              </p>
+              <p>
+                    It follows that any projector is specific to a UI toolkit.
+                    By exchanging the projector, one can present the same presentation model in a
+                    different UI toolkit.
+              </p>
+              <p>
+                    Projectors are compositional: one projector can create a view and binding that
+                    a second projector aggregates. A projector for a "week" might aggregate seven
+                    projectors for a "day".
+              </p>
+              <p>
+                    Note that a projector creates view and binding as runtime abstractions, not as source code.
+                    One can therefore see the projector as an instance of the Interpreter Pattern.
+              </p>
+            <h3 id="pm">Rich Presentation Models</h3>
+            <p>
+                Rich presentation models do not only manage a value (let's say the first name of a person)
+                but also lots of additional information that is needed for the presentation: the label,
+                help, tooltip, and whether it is optional, enabled, editable, valid, dirty
+                (changed by user and not yet saved) and so on. Since this additional information can change
+                at runtime, it must be observable (see Observer Pattern).
+            </p>
+            <p>
+                Let's introduce the concept of an Attribute to store all these observables. This gives us for
+                example a "firstname" attribute. Many such attributes (firstname, lastname, birthdate, etc.)
+                can be bundled in a presentation model (here: the person presentation model).
+            </p>
+            <p>
+                Such rich presentation models contain all information and capabilities that a projector needs
+                in the binding to make the UI toolkit elements automatically synchronize with their models.
+            </p>
+
+            <h3>Implementations</h3>
+            <p>
+                The projector pattern can be used with many languages and UI toolkits.
+                Below are two such usages, one for the Java platform and another one for JavaScript/Web.
+            </p>
+
+            <p>
+				<a href="https://github.com/canoo/open-dolphin/"
+                > OpenDolphin</a>
+                makes prolific use of the projector pattern in its demo applications as shown in the
+				following code excerpt.
+                <a href="https://github.com/canoo/open-dolphin/blob/master/subprojects/demo-javafx/client/src/main/groovy/org/opendolphin/demo/projector/SimpleFormView.groovy"
+                > Full version</a>. </p>
+            <details>
+            <summary>Projector pattern for JavaFX with Groovy/Java and OpenDolphin presentation models</summary><pre>
+class SimpleFormView {
+
+static show(ClientDolphin dolphin) {
+    start { // we have UI-toolkit specific starting sequence
+
+        IProjector projector = new JavaFxProjector(dolphin: dolphin, stage: primaryStage)
+
+        IPresentation form  = projector.createSimpleForm("person")    // using the specific projector
+        IPresentation frame = projector.createFrame(form, 400, 200)   // composing presentations
+
+        style delegate // styling could also be part of the projection
+        frame.visible = true
+    }
+}
+}
+
+
+/** Abstract Factory pattern */
+interface IProjector {
+    IPresentation createFrame(IPresentation root, double width, double height)
+    IPresentation createSimpleForm(String pmId)
+}
+
+interface IPresentation {
+    void setVisible(boolean visible)
+    Object getWidget()
+}
+
+class JavaFxPresentation implements IPresentation {
+    javafx.scene.Node node
+    void setVisible(boolean visible) {
+        node.setVisible(visible)
+    }
+    javafx.scene.Node getWidget() {
+        return node
+    }
+}
+
+class JavaFxStage implements IPresentation {
+    Stage stage
+    void setVisible(boolean visible) {
+        if (visible) stage.show()
+        else stage.close()
+    }
+    Stage getWidget() {
+        return stage
+    }
+}
+
+class JavaFxProjector implements IProjector {
+    ClientDolphin   dolphin
+    Stage           stage
+
+    JavaFxStage createFrame(IPresentation root, double width, double height) {
+        Parent sceneRoot = (Parent) root.widget
+        Scene scene = new Scene(sceneRoot, width, height)
+        stage.scene = scene
+        return new JavaFxStage(stage: stage)
+    }
+
+    JavaFxPresentation createSimpleForm(String pmId) {
+        def grid = new GridPane()
+        // ...
+        // code details omitted for brevity
+        // ...
+        return new JavaFxPresentation(node: grid)
+    }
+}
+
+                            </pre>
+        </details>
+
+            <p>
+				<a href="https://github.com/WebEngineering-FHNW/Kolibri"
+                > Kolibri </a>
+                makes prolific use of the projector pattern in its examples as shown in the
+				following code excerpt.
+                <a href="https://github.com/WebEngineering-FHNW/Kolibri/blob/main/src/kolibri/projector/simpleForm/simpleFormProjector.js"
+                > Form projector code</a>. </p>
+            <details>
+            <summary>Usage of projector pattern for HTML/DOM with JavaScript and Kolibri presentation models</summary><pre>
+const start = () => {
+    const formStructure = [
+        {value: "Text",       label: "Text",   name: "text",   type: "text"    },
+        {value: 0,            label: "Number", name: "number", type: "number"  },
+        {value: "1968-04-19", label: "Date",   name: "date",   type: "date"    },
+        {value: "12:15",      label: "Time",   name: "time",   type: "time"    },
+        {value: false,        label: "Check",  name: "check",  type: "checkbox"},
+        {value: "",           label: "Color",  name: "color",  type: "color"   }
+    ];
+    const controller = SimpleFormController(formStructure);
+    return projectForm(controller);
+}
+            </pre>
+        </details>
+
+            <p>
+                Implementation remarks:
+                in a Java/C#/TypeScript-like type system, it is often helpful to make projectors interchangeable
+                by means of the Abstract Factory Pattern.
+                In JavaScript, projectors become interchangeable by putting them in modules. The user imports the
+                module of the specific projector that he wants to use.
+            </p>
+
+            <h3 id="catalog">Catalog</h3>
+            <p>
+                Once you have created your first projector that creates - let's say - a standard form, you can enjoy the
+                efficiency boost that comes from creating as many forms as you want from only a single line of code.
+                These forms all look consistent and work consistently by design.
+                That is nice. Users love UI consistency.
+            </p>
+            <p>
+                But then, you may want to throw in some variation, let's say a two-column form instead of one-column.
+                Or add a search form, a master-detail view, a dashboard, and so on.
+                Perfect. Create a projector for each of those. You will quickly find that most applications only
+                have so-many different schemes. Make a catalog of your projectors, let your business
+                chose from it, and all the lengthy discussions about how the UI should look like are gone.
+            </p>
+            <p>
+                <picture>
+                    <source srcset="ProjectorPatternCatalog.png">
+                    <img src="ProjectorPatternCatalog.png" alt="Projector Pattern Catalog">
+                </picture>
+            </p>
+            <p>
+                Please note that variation in the projectors is not confined to the visual representation.
+                You can also provide variety in UX paradigms. One set of projectors can for example
+                use traditional save/cancel buttons while a different set goes for direct manipulation where all
+                choices are directly applied (like in most Apple UIs).
+            </p>
+
+        </section>
+
+        <section>
+          <h2>Resulting Context</h2>
+
+              <p>
+                    View creation becomes as simple and efficient as choosing from a catalog.
+                    Views do not only come with a consistent "look" but also a consistent "feel".
+                    They all react to user input in the same way throughout the application.
+              </p>
+              <p>
+                    If the views need to change in visualization or behaviour, the change can be applied in
+                    one single place - the projector - and the whole application is updated at once.
+                    Fine-tuning the UI suddenly becomes inexpensive. Better UIs emerge. Users are delighted.
+              </p>
+              <p>
+                    UI development no longer produces costly throw-away code
+                    but rather becomes an investment that pays off over time.
+              </p>
+            <p>
+                  No business logic ever touches any UI element but only presentation models, which are
+                  UI-toolkit agnostic. All business logic can therefore be tested without the UI and remains
+                  untouched when UI-specific code needs to change.
+            </p>
+              <p>
+                    Exchangeable projectors enable quick and safe migration when the UI toolkit changes as well as
+                    multichannel support for other UI toolkits.
+              </p>
+              <p>
+                    The code size is massively reduced and contains less structural duplication, which leads to
+                    reduced testing effort and fewer bugs.
+              </p>
+              <p>
+                    All these benefits come with one downside: when replacing so-many views with just
+                    one projector, then this more general projector is likely to be more complex to implement and test.
+                    But, luckily, it has to be tested only once.
+              </p>
+
+        </section>
+        <section>
+          <h2>Known Uses</h2>
+
+              <p>
+                    The implementation section lists two open-source projects and much more
+                    projects of that kind can be found in public repositories (GroupHub, DuploFX,
+                    <a href="https://github.com/KDuss/bezel">faceted search</a>, etc.).
+                    There is even an extension into
+                    <a href="https://github.com/DieterHolz/RaspPiFX-Template-Project">embedded devices</a>
+                    showcasing the power of the pattern but running the same code against a software
+                    and a hardware UI.
+              </p>
+              <p>
+                    Many closed-source projects have used the projector pattern successfully in the finance industry,
+                    banking, insurance, trading, logistics, retail, public service, and more.
+              </p>
+
+        </section>
+        <section>
+          <h2>Related Patterns</h2>
+
+              <p>
+                    A common question is how the projector pattern relates to "components" because those also
+                    create a visual representation and are meant to be compositional. The answer is that
+                    projectors often use one component or many components to create the view and use the
+                    component's binding facilities to synchronize with the presentation models.
+                    In short, it is a "used-by" relationship.
+              </p>
+              <p>
+                    The Abstract UI Toolkit Pattern can be seen as a competitor for the aspect of being able
+                    to render the same UI information on different specific UI toolkits. This is true but abstraction
+                    over different toolkits is difficult to get right without falling back to the least common
+                    denominator and making the UIs unambitious.
+              </p>
+              <p>
+                    Pretty much any implementation of the projector pattern and any application that uses the pattern
+                    also makes use of many classical "Gang of Four" Patterns, in particular: Observer, Singleton,
+                    Decorator, Adapter, Interpreter, Template Method, Strategy, Composite, Abstract Factory.
+                    Functional languages can replace many of those with higher-order functions and function
+                    composition.
+              </p>
+              <p>
+                    When using the projector pattern in the context of a classical model-view-controller (MVC)
+                    structure, our presentation models take the role of the model (M) and are only accessible through
+                    the controller (C). This in turn means that any projector does not work directly with the
+                    presentation model but with one or many controllers.
+              </p>
+
+        </section>
+
+    </main>
+    <footer lang="en">
+        <h3 style="font-weight: normal"><a href="../index.html">Prof. Dierk König</a></h3>
+    </footer>
+</body>
+</html>
