@@ -239,6 +239,65 @@
                 in the binding to make the UI toolkit elements automatically synchronize with their models.
             </p>
 
+            <h3>Structure</h3>
+            <p>
+                The following figure shows an overview of the structural pieces of the projector pattern
+                and how they connect. It places the projector pattern in the context of a classical MVC application
+                where access to the presentation models in funneled through a supervising controller.
+            </p>
+
+            <p>
+                <picture>
+                      <source srcset="ProjectorPatternOverview.png">
+                      <img src="ProjectorPatternOverview.png" alt="Projector Pattern Structure">
+                  </picture>
+            </p>
+            <p>
+                Here are some observations about the structure:
+            </p>
+            <ul>
+                <li>There can be many concrete projectors for a projector abstraction (interface).</li>
+                <li>Every projector returns the same kind of views and uses the given controllers to bind
+                    presentation models in a manner that depends on the characteristics of the view and
+                    the purpose of this specific projector.
+                </li>
+                <li>Projectors might use many controllers. Since they are passed to the projector from the
+                    caller, projectors might also share controllers.</li>
+                <li>Controllers generate possibly many presentation models but do not expose them. They
+                    rather expose specific methods (functions) that projectors need for the binding.
+                    Controllers stay in charge of everything that happens to the presentation models and
+                    can therefore enforce conversion, validation, and all other business rules.
+                    That is what we mean by "classical" MVC.
+                </li>
+                <li>Presentation models generate possibly many rich attributes.</li>
+                <li>Attributes generate as many observables as needed - not only for the value but also
+                    for other "rich" information like validity, label, editable, mandatory, and so on.
+                </li>
+            </ul>
+            <p>
+                Following the arrows in the figure "Projector Pattern Overview" reveals the important
+                relations. But it is equally important - if not more so - to recognize the arrows that
+                are not available:
+            </p>
+            <ul>
+                <li>Observables do not know about attributes (or views or anything else for that matter).</li>
+                <li>Attributes do not know about presentation models.</li>
+                <li>Presentation models do not know about controllers.</li>
+                <li>Controllers do not know about projectors or views! Controllers cannot "accidentally"
+                    change a view directly (as it often happens in non-classical MVC) and thus undermine
+                    constraints and business rules.</li>
+                <li>Views know nothing.</li>
+            </ul>
+            <p>
+                The absence of knowledge is crucially important as it constrains the possible harm that
+                any piece of code might do.
+            </p>
+
+            <p>
+                With this general knowledge about the proposed structure of the projector pattern, let's have
+                a look into possible implementations in various technologies.
+            </p>
+
             <h3>Implementations</h3>
             <p>
                 The projector pattern can be used with many languages and UI toolkits.
