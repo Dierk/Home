@@ -33,10 +33,13 @@
         img {
             height: 16em;
         }
-        p picture img {
+        figure picture img {
             height: unset;
-            padding: 2em 0 2em 0 ;
+            padding: 2em 0 1em 0 ;
             max-width: 42em;
+        }
+        .frame {
+            border: lightgray solid 1px;
         }
 
         header {
@@ -196,17 +199,20 @@
                     with enclosed logic.
               </p>
               <p>
-                  <picture>
-                        <source srcset="ProjectorPattern.png">
-                        <img src="ProjectorPattern.png" alt="Projector Pattern Overview">
-                    </picture>
+                  The projector in <a href="#fig1">Figure 1: Projector Pattern Overview</a>
+                  takes rich presentation models as input and creates a presentation
+                  by "projecting" the presentation models in the target UI toolkit. Such a presentation
+                  creates the view from UI elements as available in the target UI toolkit and
+                  binds the presentation models to those elements.
               </p>
-              <p>
-                    The projector takes rich presentation models as input and creates a presentation
-                    by "projecting" the presentation models in the target UI toolkit. Such a presentation
-                    creates the view from UI elements as available in the target UI toolkit and
-                    binds the presentation models to those elements.
-              </p>
+              <figure id="fig1">
+                    <picture>
+                            <source srcset="ProjectorPattern.png">
+                            <img src="ProjectorPattern.png" alt="Projector Pattern Overview">
+                     </picture>
+                     <figcaption>Figure 1: Projector Pattern Overview</figcaption>
+              </figure>
+
               <p>
                     It follows that any projector is specific to a UI toolkit.
                     By exchanging the projector, one can present the same presentation model in a
@@ -241,17 +247,20 @@
 
             <h3>Structure</h3>
             <p>
-                The following figure shows an overview of the structural pieces of the projector pattern
-                and how they connect. It places the projector pattern in the context of a classical MVC application
+                <a href="#fig2">Figure 2: Projector Pattern Structure</a> connects the structural pieces
+                of the projector pattern and shows their relation.
+                It places the projector pattern in the context of a classical MVC application
                 where access to the presentation models in funneled through a supervising controller.
             </p>
 
-            <p>
+            <figure id="fig2">
                 <picture>
-                      <source srcset="ProjectorPatternOverview.png">
-                      <img src="ProjectorPatternOverview.png" alt="Projector Pattern Structure">
-                  </picture>
-            </p>
+                    <source srcset="ProjectorPatternOverview.png">
+                    <img src="ProjectorPatternOverview.png" alt="Projector Pattern Structure" class="frame">
+                </picture>
+                <figcaption>Figure 2: Projector Pattern Structure</figcaption>
+            </figure>
+
             <p>
                 Here are some observations about the structure:
             </p>
@@ -275,8 +284,8 @@
                 </li>
             </ul>
             <p>
-                Following the arrows in the figure "Projector Pattern Overview" reveals the important
-                relations. But it is equally important - if not more so - to recognize the arrows that
+                Following the arrows in <a href="#fig2">Figure 2: Projector Pattern Structure</a> reveals the important
+                dependencies. But it is equally important - if not more so - to recognize the arrows that
                 are not available:
             </p>
             <ul>
@@ -428,15 +437,17 @@ const start = () => {
                 But then, you may want to throw in some variation, let's say a two-column form instead of one-column.
                 Or add a search form, a master-detail view, a dashboard, and so on.
                 Perfect. Create a projector for each of those. You will quickly find that most applications only
-                have so-many different schemes. Make a catalog of your projectors, let your business
+                have so-many different schemes. Make a catalog of your projectors like in
+                <a href="#fig3">Figure 3: Projector Catalog</a>, let your business
                 chose from it, and all the lengthy discussions about how the UI should look like are gone.
             </p>
-            <p>
+            <figure id="fig3">
                 <picture>
                     <source srcset="ProjectorPatternCatalog.png">
                     <img src="ProjectorPatternCatalog.png" alt="Projector Pattern Catalog">
                 </picture>
-            </p>
+                <figcaption>Figure 3: Projector Catalog</figcaption>
+            </figure>
             <p>
                 Please note that variation in the projectors is not confined to the visual representation.
                 You can also provide variety in UX paradigms. One set of projectors can for example
