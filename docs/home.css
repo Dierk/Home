@@ -3,6 +3,11 @@
     src: local("RobotoSlab-Light"),
          url("./font/Roboto_Slab/static/RobotoSlab-Light.ttf") format("truetype");
 }
+@font-face {
+    font-family: "JetBrainsMono-VariableFont_wght";
+    src: local("JetBrainsMono-VariableFont_wght"),
+         url("./font/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+}
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -13,6 +18,7 @@
     padding: 0;
     --left-indent: 7rem;
     --font-serif: "RobotoSlab-Light", serif;
+    --font-mono: "JetBrainsMono-VariableFont_wght", monospace;
 }
 
 body {
@@ -20,6 +26,17 @@ body {
     max-width: 100ch;
     margin: auto;
  }
+ pre {
+     font-family: var(--font-mono);
+     font-size: small;
+ }
+ details {
+     margin: 1em 0 1em 0;
+     box-shadow: 0 0 1em hsl(268, 70%, 20% );
+     padding: 1em;
+     overflow: hidden;
+ }
+
  h2 {
      font-size: 2rem;
      font-weight: bolder;

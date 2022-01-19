@@ -265,12 +265,14 @@
 class SimpleFormView {
 
 static show(ClientDolphin dolphin) {
-    start { // we have UI-toolkit specific starting sequence
+    start {
 
-        IProjector projector = new JavaFxProjector(dolphin: dolphin, stage: primaryStage)
+        IProjector projector = new JavaFxProjector(
+                                   dolphin: dolphin,
+                                   stage:   primaryStage)
 
-        IPresentation form  = projector.createSimpleForm("person")    // using the specific projector
-        IPresentation frame = projector.createFrame(form, 400, 200)   // composing presentations
+        IPresentation form  = projector.createSimpleForm("person")
+        IPresentation frame = projector.createFrame(form, 400, 200)
 
         style delegate // styling could also be part of the projection
         frame.visible = true
