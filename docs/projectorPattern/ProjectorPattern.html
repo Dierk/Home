@@ -3,101 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="../home.css">
     <title>Projector Pattern</title>
     <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            --left-indent: 7rem;
-        }
-        h2 {
-            font-size: 2rem;
-            font-weight: normal;
-        }
-        a {
-            color: black;
-        }
-        a:visited {
-            color: #707070;
-        }
-        p, li {
-            margin-top:    0.6em;
-            margin-bottom: 0.6em;
-            padding-right: var(--left-indent);
-            max-width:     42em;
-        }
-        em {
-            /*font-family: Serif;*/
-            font-style: normal;
-            font-weight: bold;
-        }
-        img {
-            height: 16em;
-        }
-        figure picture img {
-            height: unset;
-            padding: 2em 0 1em 0 ;
-            max-width: 42em;
-        }
-        .frame {
-            border: lightgray solid 1px;
-        }
-
-        header {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            width: 100%;
-            background: linear-gradient(#e2e6ee, #e1e5ed, #d7d9e4, #cdd0dc);
-        }
-        header .title {
-            --title-font-size : 3rem;
-            padding-top:  calc( var(--left-indent) - var(--title-font-size) );
-            padding-left: var(--left-indent);
-            font-size:    var(--title-font-size);
-        }
         header .title p {
-            font-size:  2rem;
+            font-size:          1.5rem;
+            margin-block-start: 0;
+            margin-block-end:   0;
         }
-
-        @keyframes slide_in_from_right {
-            from { transform: translateX(100%); }
-            to   { transform: translateX(0);    }
+        header .subtitle {
+            margin-top: .5em;
         }
-        .slide {
-            animation-name: slide_in_from_right;
-            animation-duration: 1s;
-        }
-        header img {
-            float: right;
-            max-height: 20rem;
-        }
-
-        main {
-            margin-left: var(--left-indent);
-        }
-
-        footer {
-            background:    linear-gradient(#cdd0dc, #e2e6ee);
-            padding-left:  var(--left-indent);
-            padding-right: var(--left-indent);
-            display:       grid;
-            grid-template-columns: 3fr 2fr;
-        }
-        address {
-            font-style:  normal;
-            white-space: pre-line;
+        figure {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0;
+            margin-inline-end: 0;
         }
     </style>
+
 </head>
 <body >
     <header>
         <div class="title">
             Projector Pattern
-            <p>Efficient Creation of Ambitious User Interfaces</p>
+            <div class="subtitle">
+
+                <p>Efficient Creation </p>
+                <p>of Ambitious User Interfaces</p>
+            </div>
         </div>
         <picture>
-            <source srcset="../Dierk_Koenig_small.jpg">
-            <img src="../Dierk_Koenig_small.jpg" alt="Dierk König Portrait" id="me" onload="me.classList.add('slide')">
+            <source srcset="../img/Dierk_Koenig_small.jpg">
+            <img src="../img/Dierk_Koenig_small.jpg" alt="Dierk König Portrait" id="me" onload="me.classList.add('slide')">
         </picture>
     </header>
     <main>
@@ -129,7 +68,7 @@
                   Such schemes might include one-column-form, two-column-form, search form, dashboard, etc.
               </p>
               <p>
-                  The pattern can only work if we have UI toolkit with elements (aka components, widgets)
+                  The pattern can only work if we have a UI toolkit with elements (aka components, widgets)
                   that expose a binding facility. Binding means that we can listen for changes in the element
                   (view binding) and we apply changes to the element (data binding).
                   Some such UI toolkits are: JavaFX, Swing, AWT, SWT, WFC, HTML/DOM, Tk, GTK, and Fox.

@@ -2,79 +2,9 @@
 <html lang=de>
 <head>
 	<meta charset="UTF-8">
-	<link rel="icon" href="data:,">
+	<link rel="icon"       href="data:,">
+	<link rel="stylesheet" href="home.css">
 	<title>Warum Web Weiterbildung</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            --left-indent: 7rem;
-        }
-        h2 {
-            font-size: 2rem;
-            font-weight: normal;
-        }
-        a {
-            color: black;
-        }
-        a:visited {
-            color: #707070;
-        }
-        p {
-            margin-top:    0.6em;
-            margin-bottom: 0.6em;
-			padding-right: var(--left-indent);
-        }
-		em {
-			/*font-family: Serif;*/
-			font-style: normal;
-			font-weight: bold;
-		}
-        img {
-            height: 16em;
-        }
-
-        header {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            width: 100%;
-            background: linear-gradient(#e2e6ee, #e1e5ed, #d7d9e4, #cdd0dc);
-        }
-        header .title {
-            --title-font-size : 3rem;
-            padding-top:  calc( var(--left-indent) - var(--title-font-size) );
-            padding-left: var(--left-indent);
-            font-size:    var(--title-font-size);
-        }
-        @keyframes slide_in_from_right {
-            from { transform: translateX(100%); }
-            to   { transform: translateX(0);    }
-        }
-        .slide {
-            animation-name: slide_in_from_right;
-            animation-duration: 1s;
-        }
-        header img {
-            float: right;
-            max-height: 20rem;
-        }
-
-        main {
-            margin-left: var(--left-indent);
-        }
-
-        footer {
-            background:    linear-gradient(#cdd0dc, #e2e6ee);
-            padding-left:  var(--left-indent);
-            padding-right: var(--left-indent);
-            display:       grid;
-            grid-template-columns: 3fr 2fr;
-        }
-        address {
-            font-style:  normal;
-            white-space: pre-line;
-        }
-    </style>
 </head>
 <body >
 	<header>
@@ -83,8 +13,8 @@
 			bei der FHNW?
         </div>
 		<picture>
-		    <source srcset="Dierk_Koenig_small.jpg">
-			<img src="Dierk_Koenig_small.jpg" alt="Dierk König Portrait" id="me" onload="me.classList.add('slide')">
+		    <source srcset="img/Dierk_Koenig_small.jpg">
+			<img src="img/Dierk_Koenig_small.jpg" alt="Dierk König Portrait" id="me" onload="me.classList.add('slide')">
 		</picture>
 	</header>
 	<main>
@@ -94,7 +24,7 @@
 
 			  <p>
 			  		Sie sind vermutlich ein erfahrener Web Entwickler oder Entwicklerin
-				    und haben schone einige Web Applikationsprojekte erfolgreich abgeschlossen.
+				    und haben schon einige Web Applikationsprojekte erfolgreich abgeschlossen.
 			  </p>
 			  <p>
 				  	Zurecht können Sie von sich sagen, dass Sie genug wissen und können, um
@@ -176,7 +106,8 @@
 		<h2>Prof. Dierk König</h2> <div></div>
 		<address>
             Lecturer at <a href="https://www.fhnw.ch/en/people/dierk-koenig">FHNW</a>
-            University of Applied Sciences and Arts Northwestern Switzerland
+            University of Applied Sciences and Arts
+			Northwestern Switzerland
 		    School of Engineering
 		    Bahnhofstrasse 6
 		    CH-5210 Windisch
@@ -184,11 +115,13 @@
             <a href="mailto:dierk.koenig@fhnw.ch">dierk.koenig@fhnw.ch</a>
 			<a href="tel:+41-56-202-79-83">+41 56 202 79 83</a>
 
+
 		</address>
 		<address>
 			<a href="index.html">Personal Homepage</a>
 
             Fellow at <a href="https://karakun.com">Karakun AG</a>
+
 			Elisabethenanlage 25
 			CH-4051 Basel
 

@@ -1,0 +1,108 @@
+@font-face {
+    font-family: "RobotoSlab-Light";
+    src: local("RobotoSlab-Light"),
+         url("./font/Roboto_Slab/static/RobotoSlab-Light.ttf") format("truetype");
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    margin:  0;
+    padding: 0;
+    --left-indent: 7rem;
+    --font-serif: "RobotoSlab-Light", serif;
+}
+
+body {
+    font-family: var(--font-serif);
+    max-width: 100ch;
+    margin: auto;
+ }
+ h2 {
+     font-size: 2rem;
+     font-weight: bolder;
+ }
+ h3 {
+     font-weight: bolder;
+ }
+ a {
+     color: black;
+ }
+ a:visited {
+     color: #707070;
+ }
+ p {
+     margin-block-start: 0;
+     margin-bottom: 0.6em;
+     letter-spacing: 0.02em;
+     line-height: 1.5em;
+ }
+ p + p {
+     margin-top:    0.6em;
+ }
+ header img {
+     height: 16em;
+ }
+ main img {
+      width: 100%;
+  }
+ .covers img {
+     height: 16em;
+     width: initial;
+ }
+
+ header {
+     display: grid;
+     grid-template-columns: 2fr 1fr;
+     width: 100%;
+     background: linear-gradient(#e2e6ee, #e1e5ed, #d7d9e4, #cdd0dc);
+ }
+ header picture {
+     position: relative;
+ }
+ header picture::after { /*hide the image before it slides in*/
+     content:   "";
+     position:  absolute;
+     top:       0;
+     right:     calc(100% * -1);
+     width:     100%;
+     height:    100%;
+     background-color: white;
+ }
+ header .title {
+     --title-font-size : 3rem;
+     padding-top:  calc( var(--left-indent) - var(--title-font-size) );
+     padding-left: var(--left-indent);
+     font-size:    var(--title-font-size);
+ }
+ @keyframes slide_in_from_right {
+     from { transform: translateX(100%); }
+     to   { transform: translateX(0);    }
+ }
+ .slide {
+     animation-name: slide_in_from_right;
+     animation-duration: 1s;
+ }
+ header img {
+     float:      right;
+     max-height: 20rem;
+ }
+
+ main {
+     margin: 0 var(--left-indent) 0 var(--left-indent);
+ }
+
+ footer {
+     margin-top:    4rem;
+     background:    linear-gradient(#cdd0dc, #e2e6ee);
+     padding-left:  var(--left-indent);
+     padding-right: var(--left-indent);
+     display:       grid;
+     grid-template-columns: 3fr 2fr;
+ }
+ address {
+     font-style:  normal;
+     white-space: pre-line;
+ }
