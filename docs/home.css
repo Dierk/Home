@@ -24,7 +24,8 @@
 body {
     font-family: var(--font-serif);
     max-width: 100ch;
-    margin: auto;
+    margin:    auto;
+    padding:   0 2rem 0 2rem;
  }
  pre {
      font-family: var(--font-mono);
@@ -105,10 +106,6 @@ body {
  header img {
      float:      right;
      max-height: 20rem;
- }
-
- main {
-     margin: 0 var(--left-indent) 0 var(--left-indent);
  }
 
  footer {
