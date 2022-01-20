@@ -27,15 +27,6 @@
     --font-serif-bold:  "RobotoSlab-Regular",  serif;
     --font-mono:        "JetBrainsMono-VariableFont_wght", monospace;
 }
-@media (max-width: 500px) {
-    :root {
-        --left-indent: 1rem;
-        --title-font-size: 2rem;
-    }
-    footer {
-         grid-template-columns: 1fr;
-     }
-}
 
 body {
     font-family: var(--font-serif);
@@ -142,3 +133,13 @@ body {
      font-style:  normal;
      white-space: pre-line;
  }
+
+ @media (max-width: 500px) {
+    :root {
+        --left-indent: 1rem;
+        --title-font-size: 2rem;
+    }
+    footer {
+         grid-template-columns: 1fr;
+     }
+}
