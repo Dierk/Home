@@ -32,6 +32,9 @@
         --left-indent: 1rem;
         --title-font-size: 2rem;
     }
+    footer {
+         grid-template-columns: 1fr;
+     }
 }
 
 body {
