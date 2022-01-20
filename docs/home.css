@@ -16,9 +16,16 @@
 :root {
     margin:  0;
     padding: 0;
-    --left-indent: 7rem;
+    --left-indent:      7rem;
+    --title-font-size : 3rem;
     --font-serif: "RobotoSlab-Light", serif;
     --font-mono: "JetBrainsMono-VariableFont_wght", monospace;
+}
+@media (max-width: 500px) {
+    :root {
+        --left-indent: 1rem;
+        --title-font-size: 2rem;
+    }
 }
 
 body {
@@ -76,6 +83,7 @@ body {
      grid-template-columns: 2fr 1fr;
      width: 100%;
      background: linear-gradient(#e2e6ee, #e1e5ed, #d7d9e4, #cdd0dc);
+     overflow-x: hidden;
  }
  header picture {
      position: relative;
@@ -90,7 +98,6 @@ body {
      background-color: white;
  }
  header .title {
-     --title-font-size : 3rem;
      padding-top:  calc( var(--left-indent) - var(--title-font-size) );
      padding-left: var(--left-indent);
      font-size:    var(--title-font-size);
