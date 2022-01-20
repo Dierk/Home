@@ -134,7 +134,7 @@ body {
      white-space: pre-line;
  }
 
- @media (max-width: 390px) {
+ @media (max-width: 389px) {
     :root {
         --left-indent: 1rem;
         --title-font-size: 2rem;
