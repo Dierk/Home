@@ -52,14 +52,14 @@ body {
  details pre {
      overflow-x: scroll;
  }
-
- h2 {
+ h2, h3 {
      font-family: var(--font-serif-bold);
+     letter-spacing: initial; /* for some reason, iPhone applies the p letter spacing (?) */
+ }
+ h2 {
      font-size: 2rem;
  }
- h3 {
-     font-family: var(--font-serif-bold);
- }
+
  a {
      color: black;
  }
