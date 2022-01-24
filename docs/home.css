@@ -113,12 +113,16 @@ body {
      to   { transform: translateX(0);    }
  }
  .slide {
-     animation-name: slide_in_from_right;
-     animation-duration: 1s;
+     animation-name:        slide_in_from_right;
+     animation-duration:    1s;
+     animation-timing-function: ease-out;
+     animation-delay:       1s;
+     animation-fill-mode:   forwards;
  }
  header img {
      float:      right;
      max-height: 20rem;
+     transform:  translateX(100%);
  }
 
  footer {
