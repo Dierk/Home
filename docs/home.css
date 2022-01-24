@@ -125,6 +125,26 @@ body {
      transform:  translateX(100%);
  }
 
+ .backlink {
+     display: none;
+ }
+ div:target .backlink {
+     display: block;
+     font-size: 3rem;
+     position: fixed;
+     font-weight: lighter;
+     color: white;
+     inset: 5% 5% auto auto;
+     text-decoration: none;
+     text-shadow: 0 0 .2em black;
+ }
+ div:target {
+     position: fixed;
+     inset: 0 0 0 0;
+     background: hsla(0, 0%, 0%, .7);
+     padding: 1em;
+ }
+
  footer {
      margin-top:    4rem;
      background:    linear-gradient(#cdd0dc, #e2e6ee);

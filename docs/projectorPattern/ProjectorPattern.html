@@ -131,7 +131,7 @@
 
         </section>
 
-        <section>
+        <section id="solution">
           <h2>Solution</h2>
 
               <p>
@@ -146,13 +146,18 @@
                   creates the view from UI elements as available in the target UI toolkit and
                   binds the presentation models to those elements.
               </p>
-              <figure id="fig1">
-                    <picture>
-                            <source srcset="ProjectorPattern.png">
-                            <img src="ProjectorPattern.png" alt="Projector Pattern Overview">
-                     </picture>
-                     <figcaption>Figure 1: Projector Pattern Overview</figcaption>
-              </figure>
+              <div id="fig1">
+                  <a href="#solution" class="backlink">&CircleTimes;</a>
+                  <figure>
+                      <a href="#fig1">
+                          <picture>
+                              <source srcset="ProjectorPattern.png">
+                              <img src="ProjectorPattern.png" alt="Projector Pattern Overview">
+                          </picture>
+                      </a>
+                      <figcaption>Figure 1: Projector Pattern Overview</figcaption>
+                  </figure>
+              </div>
 
               <p>
                     It follows that any projector is specific to a UI toolkit.
@@ -186,7 +191,7 @@
                 in the binding to make the UI toolkit elements automatically synchronize with their models.
             </p>
 
-            <h3>Structure</h3>
+            <h3 id="structure">Structure</h3>
             <p>
                 <a href="#fig2">Figure 2: Projector Pattern Structure</a> connects the structural pieces
                 of the projector pattern and shows their relation.
@@ -194,14 +199,18 @@
                 where access to the presentation models in funneled through a supervising controller.
             </p>
 
-            <figure id="fig2">
-                <picture>
-                    <source srcset="ProjectorPatternOverview.png">
-                    <img src="ProjectorPatternOverview.png" alt="Projector Pattern Structure" class="frame">
-                </picture>
-                <figcaption>Figure 2: Projector Pattern Structure</figcaption>
-            </figure>
-
+            <div id="fig2">
+                <a href="#structure" class="backlink">&CircleTimes;</a>
+                <figure>
+                    <a href="#fig2">
+                        <picture>
+                            <source srcset="ProjectorPatternOverview.png">
+                            <img src="ProjectorPatternOverview.png" alt="Projector Pattern Structure" class="frame">
+                        </picture>
+                    </a>
+                    <figcaption>Figure 2: Projector Pattern Structure</figcaption>
+                </figure>
+            </div>
             <p>
                 Here are some observations about the structure:
             </p>
@@ -399,13 +408,20 @@ const start = () => {
                 <a href="#fig3">Figure 3: Projector Catalog</a>, let your business
                 chose from it, and all the lengthy discussions about how the UI should look like are gone.
             </p>
-            <figure id="fig3">
-                <picture>
-                    <source srcset="ProjectorPatternCatalog.png">
-                    <img src="ProjectorPatternCatalog.png" alt="Projector Pattern Catalog">
-                </picture>
-                <figcaption>Figure 3: Projector Catalog</figcaption>
-            </figure>
+
+            <div id="fig3">
+                <a href="#catalog" class="backlink">&CircleTimes;</a>
+                <figure>
+                    <a href="#fig3">
+                        <picture>
+                            <source srcset="ProjectorPatternCatalog.png">
+                            <img src="ProjectorPatternCatalog.png" alt="Projector Pattern Catalog">
+                        </picture>
+                    </a>
+                    <figcaption>Figure 3: Projector Catalog</figcaption>
+                </figure>
+            </div>
+
             <p>
                 Please note that variation in the projectors is not confined to the visual representation.
                 You can also provide variety in UX paradigms. One set of projectors can for example
