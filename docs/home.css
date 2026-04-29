@@ -21,7 +21,7 @@
 :root {
     margin:  0;
     padding: 0;
-    --left-indent:      clamp(1rem, 20vw,7rem);
+    --left-indent:      clamp(1rem, 10vw,7rem);
     --title-font-size : 3rem;
     --font-serif:       "RobotoSlab-Light", serif;
     --font-serif-bold:  "RobotoSlab-Regular",  serif;
