@@ -145,8 +145,14 @@ body {
      padding: 1em;
  }
 
+ aside {
+     margin-top:     4rem;
+     background:     linear-gradient(#cdd0dc, #e2e6ee);
+     padding-inline: var(--left-indent) ;
+     padding-block:  calc(var(--left-indent) / 2) ;
+ }
  footer {
-     margin-top:    4rem;
+     margin-top:    2rem;
      background:    linear-gradient(#cdd0dc, #e2e6ee);
      padding-left:  var(--left-indent);
      padding-right: var(--left-indent);

@@ -1,6 +1,11 @@
 
-const footer = `<footer>
-     <h2>Contact</h2> <div></div>
+const footer = `
+    <aside>
+    <p>All content, opinions, and statements are mine only and do not necessarily reflect those of my employer.</p>
+    <p>No AI has been used in preparing this document.</p>
+    </aside>
+<footer>
+     <h2>Contact</h2> <div></div>     
      <address>
              Prof. Dierk König
              University of Applied Sciences and Arts
