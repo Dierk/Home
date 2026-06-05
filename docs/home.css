@@ -56,13 +56,18 @@ body {
 
  a {
      color: black;
+     text-underline-offset: .1em;
  }
  a:visited {
      color: #707070;
  }
+
  ul {
     padding-inline-start: 1.5em;
     list-style-type:      circle;
+ }
+ ol {
+    padding-inline-start: 1em;
  }
  p, li {
      margin-block-start: 0;
@@ -70,6 +75,30 @@ body {
      letter-spacing: 0.02em;
      line-height: 1.5em;
  }
+
+ nav {
+     float:            right;
+     background-color: #cdd0dc;
+     padding-block:    .2lh;
+     padding-right:    1em;
+     margin-left:      1em;
+     border-radius:    .3em;
+     border:           1px solid #aaa;
+     box-shadow:       .2em .2em .8em #aaa;
+     ul {
+         list-style:   none;
+     }
+     li {
+         margin-bottom: 0.2em;
+         line-height:   1.2em;
+     }
+     a:visited {
+         color: #333;
+     }
+ }
+
+
+
  p + p {
      margin-top:    0.6em;
  }
@@ -172,4 +201,11 @@ body {
     footer {
          grid-template-columns: 1fr;
      }
+}
+
+@view-transition {
+     navigation: auto;
+}
+::view-transition-group(root) {
+    animation-duration: 1s;
 }
