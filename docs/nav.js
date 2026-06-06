@@ -3,6 +3,7 @@ document.getElementById("nav").innerHTML = `
         <li><a href="AiPerfectStorm.html">AI Fallacies: Perfect Storm</a></li>
         <ol>
             <li><a href="AiSugarHigh.html">Sugar High</a></li>
+            <li><a href="AiConditioning.html">Conditioning</a></li>
         </ol>
         <li><a href="AiDoesNotWork.html">AI Does not Work</a></li>
         <li><a href="ComputerScienceEducation.html">Computer Science Education</a></li>
