@@ -138,21 +138,15 @@ body {
      padding-left: var(--left-indent);
      font-size:    var(--title-font-size);
  }
- @keyframes slide_in_from_right {
-     from { transform: translateX(100%); }
-     to   { transform: translateX(0);    }
- }
- .slide {
-     animation-name:        slide_in_from_right;
-     animation-duration:    1s;
-     animation-timing-function: ease-out;
-     animation-delay:       1s;
-     animation-fill-mode:   forwards;
- }
+
  header img {
      float:      right;
      max-height: 20rem;
-     transform:  translateX(100%);
+     transform:  translateX(0);
+     transition: transform 1s ease-out;
+     @starting-style {
+         transform: translateX(100%);
+     }
  }
 
  .backlink {

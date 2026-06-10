@@ -1,10 +1,10 @@
-
-const footer = `
+const footer                                = `
     <aside>
     <p>All content, opinions, and statements are mine only and do not necessarily reflect those of my employer.</p>
     <p>No AI has been used in preparing this document.</p>
+    <p><a href="AiPerfectStorm.html#feedback">Suggest Improvements</a></p>
     </aside>
-<footer>
+    <footer>
      <h2>Contact</h2> <div></div>     
      <address>
              Prof. Dierk König
