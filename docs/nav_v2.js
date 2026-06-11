@@ -6,6 +6,7 @@ document.getElementById("nav").innerHTML = `
             <li><a href="AiConditioning.html">Conditioning</a></li>
             <li><a href="AiNoCopilot.html">No Copilot</a></li>
             <li><a href="AiCorruption.html">Corruption</a></li>
+            <li><a href="AiResignation.html">Silent Resignation</a></li>
         </ol>
         <li><a href="AiDoesNotWork.html">AI Does not Work</a></li>
         <li><a href="ComputerScienceEducation.html">Computer Science Education</a></li>
